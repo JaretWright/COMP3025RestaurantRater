@@ -9,9 +9,7 @@ import com.google.firebase.firestore.Query
 class RestaurantListViewModel : ViewModel() {
 
     //private instance variable to keep track of the changable data
-    private val restaurants : MutableLiveData<List<Restaurant>> by lazy{
-        MutableLiveData()
-    }
+    private val restaurants = MutableLiveData<List<Restaurant>>()
 
     init {
         loadRestaurants()
@@ -35,8 +33,20 @@ class RestaurantListViewModel : ViewModel() {
                 return@addSnapshotListener
             }
 
-            //Loop over the documents returned and update the list of restaurants
+            val restaurantList = ArrayList<Restaurant>()
 
+            //.let is used to ensure that the documents object is not null
+            documents?.let {
+                //Loop over the documents returned and update the list of restaurants
+                for (document in documents) {
+                    val restaurant = document.toObject(Restaurant::class.java)
+                    restaurantList.add(restaurant)
+                }
+                restaurants.value = restaurantList
+            }
+
+
+            }
         }
     }
 
