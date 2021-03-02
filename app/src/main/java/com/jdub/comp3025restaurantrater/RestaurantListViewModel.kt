@@ -1,6 +1,7 @@
 package com.jdub.comp3025restaurantrater
 
 import android.util.Log
+import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.google.firebase.firestore.FirebaseFirestore
@@ -15,6 +16,12 @@ class RestaurantListViewModel : ViewModel() {
         loadRestaurants()
     }
 
+    //this method will "get" the restaurant list as LiveData.  Note this is different from
+    //mutableLiveData as the calling classes cannot change the data
+    fun getRestaurants() : LiveData<List<Restaurant>> {
+        return restaurants
+    }
+
     /**
      * This method will return a list of Restaurant objects.  If there are any changes to the DB, it
      * up automatically update the list.
@@ -25,7 +32,7 @@ class RestaurantListViewModel : ViewModel() {
                     .orderBy("name", Query.Direction.ASCENDING)
 
         db.addSnapshotListener { documents, exception ->
-            Log.i("DB_RESPONSE", "# of elements returneed ${documents?.size()}")
+            Log.i("DB_RESPONSE", "# of elements returned ${documents?.size()}")
 
             //if an exception was returned, log it
             if (exception != null){

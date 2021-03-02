@@ -7,6 +7,8 @@ import android.widget.TextView
 import com.google.firebase.firestore.FirebaseFirestore
 import com.jdub.comp3025restaurantrater.databinding.ActivityRestaurantListBinding
 
+import androidx.activity.viewModels
+
 class RestaurantListActivity : AppCompatActivity() {
     private lateinit var binding : ActivityRestaurantListBinding
 
@@ -15,25 +17,20 @@ class RestaurantListActivity : AppCompatActivity() {
         binding = ActivityRestaurantListBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        val db = FirebaseFirestore.getInstance().collection("restaurants")
+        val model : RestaurantListViewModel by viewModels()
+        model.getRestaurants().observe( this, {restaurantList->
+            //clear the exisiting LinearLayout
+            binding.linearLayout.removeAllViews()
 
-        //this will log each of the restaurant's
-        db.get().addOnSuccessListener { documents ->
-            if (documents != null) {
-                Log.i("DB_RESPONSE", "DocumentSnapshot data: ${documents.size()} ")
-                for (document in documents) {
-                    val restaurant = document.toObject(Restaurant::class.java)
-                    val textView = TextView(this)
-                    textView.text = restaurant.name
-                    textView.textSize = 20f
-                    binding.linearLayout.addView(textView)
-                }
-            } else {
-                Log.i("DB_RESPONSE", "No such document")
+            for (restaurant in restaurantList)
+            {
+                val textView = TextView(this)
+                textView.text = restaurant.name
+                textView.textSize = 20f
+                binding.linearLayout.addView(textView)
             }
         }
-            .addOnFailureListener { exception ->
-                Log.i("DB_RESPONSE", "get failed with ", exception)
-            }
+
+        )
     }
 }
