@@ -44,10 +44,6 @@ class RestaurantListViewModel : ViewModel() {
                 }
                 restaurants.value = restaurantList
             }
-
-
-            }
         }
     }
-
 }
