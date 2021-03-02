@@ -3,6 +3,7 @@ package com.jdub.comp3025restaurantrater
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
+import android.widget.TextView
 import com.google.firebase.firestore.FirebaseFirestore
 import com.jdub.comp3025restaurantrater.databinding.ActivityRestaurantListBinding
 
@@ -21,7 +22,11 @@ class RestaurantListActivity : AppCompatActivity() {
             if (documents != null) {
                 Log.i("DB_RESPONSE", "DocumentSnapshot data: ${documents.size()} ")
                 for (document in documents) {
-                    Log.i("DB_RESPONSE", "DocumentSnapshot data: ${document.data} ")
+                    val restaurant = document.toObject(Restaurant::class.java)
+                    val textView = TextView(this)
+                    textView.text = restaurant.name
+                    textView.textSize = 20f
+                    binding.linearLayout.addView(textView)
                 }
             } else {
                 Log.i("DB_RESPONSE", "No such document")
