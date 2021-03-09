@@ -2,10 +2,16 @@ package com.jdub.comp3025restaurantrater
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.widget.Toast
+import com.google.firebase.firestore.FirebaseFirestore
 import com.jdub.comp3025restaurantrater.databinding.ActivityCommentBinding
 
 class CommentActivity : AppCompatActivity() {
     private lateinit var binding : ActivityCommentBinding
+
+    //define the ViewModel and the ViewModelFactory
+    private lateinit var viewModel : CommentViewModel
+    private lateinit var viewModelFactory : CommentViewModelFactory
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -15,5 +21,22 @@ class CommentActivity : AppCompatActivity() {
         binding.restaurantNameTextView.text = intent.getStringExtra("restaurantName")
         val restaurantID = intent.getStringExtra("restaurantID")
 
+        binding.saveCommentButton.setOnClickListener {
+            if (binding.usernameEditText.text.toString().isNotEmpty() && binding.bodyEditText.text.toString().isNotEmpty())
+            {
+                //save the comment to the DB
+                val db = FirebaseFirestore.getInstance().collection("comments")
+                val id = db.document().id
+
+                val newComment = Comment(id, binding.usernameEditText.text.toString(), binding.bodyEditText.text.toString(),restaurantID)
+                db.document(id).set(newComment)
+                    .addOnSuccessListener { Toast.makeText(this, "Added to DB", Toast.LENGTH_LONG).show() }
+                    .addOnFailureListener { Toast.makeText(this, "Failed to add", Toast.LENGTH_LONG).show() }
+            }
+            else
+            {
+                Toast.makeText(this,"Both username and comment must be populated", Toast.LENGTH_LONG).show()
+            }
+        }
     }
 }
