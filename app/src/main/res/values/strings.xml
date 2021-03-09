@@ -5,6 +5,10 @@
     <string name="add_restaurant">Add Restaurant</string>
     <string name="restaurants_in_db">Restaurants in DB</string>
     <string name="recyclerview_restaurants">RecyclerView Restaurants</string>
+    <string name="restaurants">Restaurants</string>
+    <string name="enter_your_name">Enter your name</string>
+    <string name="enter_comments">Enter Comments</string>
+    <string name="save">Save</string>
     <string-array name="ratings">
         <item>Choose Rating</item>
         <item>1</item>
