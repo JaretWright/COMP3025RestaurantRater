@@ -11,13 +11,15 @@
         android:theme="@style/Theme.COMP3025RestaurantRater">
         <activity android:name=".CommentActivity"></activity>
         <activity android:name=".RecyclerViewGridActivity">
+
+        </activity>
+        <activity android:name=".RecyclerViewRestaurantListActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".RecyclerViewRestaurantListActivity"></activity>
         <activity android:name=".RestaurantListActivity" />
         <activity android:name=".MainActivity" />
     </application>

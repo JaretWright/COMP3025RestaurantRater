@@ -9,7 +9,8 @@ import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 
 class RecyclerViewAdapter (val context: Context,
-                           val restaurants : List<Restaurant>) : RecyclerView.Adapter<RecyclerViewAdapter.RestaurantViewHolder>()
+                           val restaurants : List<Restaurant>,
+                            val itemListener : RestaurantItemListener) : RecyclerView.Adapter<RecyclerViewAdapter.RestaurantViewHolder>()
 {
    //the goal of this class is to create a way to access the variables/views in the item_restaurant.xml layout file
    inner class RestaurantViewHolder(itemView : View) : RecyclerView.ViewHolder(itemView){
@@ -41,9 +42,13 @@ class RecyclerViewAdapter (val context: Context,
             nameTextView.text = restaurant.name
             ratingBar.rating = restaurant.rating!!.toFloat()
         }
+
+        holder.itemView.setOnClickListener {
+            itemListener.restaurantSelected(restaurant)
+        }
     }
 
-
-
-
+    interface RestaurantItemListener{
+        fun restaurantSelected(restaurant : Restaurant)
+    }
 }
