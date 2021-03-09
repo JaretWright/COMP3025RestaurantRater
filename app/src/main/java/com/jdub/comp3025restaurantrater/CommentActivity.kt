@@ -3,6 +3,8 @@ package com.jdub.comp3025restaurantrater
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Toast
+import androidx.lifecycle.Observer
+import androidx.lifecycle.ViewModelProvider
 import com.google.firebase.firestore.FirebaseFirestore
 import com.jdub.comp3025restaurantrater.databinding.ActivityCommentBinding
 
@@ -21,6 +23,7 @@ class CommentActivity : AppCompatActivity() {
         binding.restaurantNameTextView.text = intent.getStringExtra("restaurantName")
         val restaurantID = intent.getStringExtra("restaurantID")
 
+        //saving a new comment
         binding.saveCommentButton.setOnClickListener {
             if (binding.usernameEditText.text.toString().isNotEmpty() && binding.bodyEditText.text.toString().isNotEmpty())
             {
@@ -38,5 +41,19 @@ class CommentActivity : AppCompatActivity() {
                 Toast.makeText(this,"Both username and comment must be populated", Toast.LENGTH_LONG).show()
             }
         }
+
+        //configure the recyclerView with the ViewModelFactory and ViewModel
+        restaurantID?.let {
+            viewModelFactory = CommentViewModelFactory(restaurantID)
+
+            //connect the viewmodel with the activity
+            viewModel = ViewModelProvider(this, viewModelFactory).get(CommentViewModel::class.java)
+            viewModel.getComments().observe(this, Observer<List<Comment>>{
+
+            })
+        }
+
+
+
     }
 }
