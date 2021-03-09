@@ -48,8 +48,9 @@ class CommentActivity : AppCompatActivity() {
 
             //connect the viewmodel with the activity
             viewModel = ViewModelProvider(this, viewModelFactory).get(CommentViewModel::class.java)
-            viewModel.getComments().observe(this, Observer<List<Comment>>{
-
+            viewModel.getComments().observe(this, Observer<List<Comment>>{ comments ->
+                var recyclerAdapter = CommentViewAdapter(this, comments)
+                binding.commentsRecyclerView.adapter = recyclerAdapter
             })
         }
 
