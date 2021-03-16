@@ -21,6 +21,12 @@ class RecyclerViewRestaurantListActivity : AppCompatActivity(), RecyclerViewAdap
             var recyclerAdapter = RecyclerViewAdapter(this, restaurants, this)
             binding.verticalRecyclerView.adapter = recyclerAdapter
         })
+
+        //setup a click listener for the floating action button to add a new restaurant
+        binding.addRestaurantFAB.setOnClickListener {
+            val intent = Intent(this, MainActivity::class.java)
+            startActivity(intent)
+        }
     }
 
     override fun restaurantSelected(restaurant: Restaurant) {

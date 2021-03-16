@@ -1,5 +1,6 @@
 package com.jdub.comp3025restaurantrater
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Toast
@@ -31,8 +32,10 @@ class MainActivity : AppCompatActivity() {
                         .addOnSuccessListener {
                             //show confirmation and clear the fields
                             Toast.makeText(this, "Restaurant Added", Toast.LENGTH_LONG).show()
-                            binding.restaurantEditText.setText("")
-                            binding.ratingSpinner.setSelection(0)
+
+                            //navigate back to the recyclerview list of restaurants
+                            val intent = Intent(this, RecyclerViewRestaurantListActivity::class.java)
+                            startActivity(intent)
                         }
                         .addOnFailureListener {
                             Toast.makeText(this, it.localizedMessage, Toast.LENGTH_LONG).show()
