@@ -34,7 +34,7 @@ class MainActivity : AppCompatActivity() {
                             Toast.makeText(this, "Restaurant Added", Toast.LENGTH_LONG).show()
 
                             //navigate back to the recyclerview list of restaurants
-                            val intent = Intent(this, RecyclerViewRestaurantListActivity::class.java)
+                            val intent = Intent(this, RestaurantRecyclerListActivity::class.java)
                             startActivity(intent)
                         }
                         .addOnFailureListener {

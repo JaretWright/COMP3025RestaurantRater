@@ -18,7 +18,7 @@
         </activity>
         <activity android:name=".CommentActivity" />
         <activity android:name=".RecyclerViewGridActivity"></activity>
-        <activity android:name=".RecyclerViewRestaurantListActivity">
+        <activity android:name=".RestaurantRecyclerListActivity">
 
         </activity>
         <activity android:name=".RestaurantListActivity" />

@@ -6,8 +6,6 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Toast
 import com.firebase.ui.auth.AuthUI
-import com.firebase.ui.auth.IdpResponse
-import com.google.firebase.auth.FirebaseAuth
 
 
 @Suppress("DEPRECATION")
@@ -43,7 +41,7 @@ class SignInActivity : AppCompatActivity() {
             if (resultCode == Activity.RESULT_OK) {
                 // Successfully signed in
 //                val user = FirebaseAuth.getInstance().currentUser
-                val intent = Intent(this, RecyclerViewRestaurantListActivity::class.java)
+                val intent = Intent(this, RestaurantRecyclerListActivity::class.java)
                 startActivity(intent)
                 // ...
             } else {

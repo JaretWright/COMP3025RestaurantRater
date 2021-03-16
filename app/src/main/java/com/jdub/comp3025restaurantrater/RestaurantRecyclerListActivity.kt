@@ -7,7 +7,7 @@ import androidx.activity.viewModels
 import androidx.lifecycle.Observer
 import com.jdub.comp3025restaurantrater.databinding.ActivityRecyclerViewRestaurantListBinding
 
-class RecyclerViewRestaurantListActivity : AppCompatActivity(), RecyclerViewAdapter.RestaurantItemListener {
+class RestaurantRecyclerListActivity : AppCompatActivity(), RecyclerViewAdapter.RestaurantItemListener {
     private lateinit var binding : ActivityRecyclerViewRestaurantListBinding
 
     override fun onCreate(savedInstanceState: Bundle?) {

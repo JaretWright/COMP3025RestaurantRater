@@ -54,7 +54,9 @@ class CommentActivity : AppCompatActivity() {
             })
         }
 
-
+        binding.backToRecyclerViewFAB.setOnClickListener {
+            finish()
+        }
 
     }
 }
