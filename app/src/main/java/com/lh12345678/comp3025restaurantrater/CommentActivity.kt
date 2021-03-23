@@ -1,7 +1,10 @@
 package com.lh12345678.comp3025restaurantrater
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.view.Menu
+import android.view.MenuItem
 import android.widget.Toast
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
@@ -58,5 +61,31 @@ class CommentActivity : AppCompatActivity() {
             finish()
         }
 
+        setSupportActionBar(binding.mainToolBar.toolbar)
+    }
+
+    //This method will connect the main_menu.xml file with the menu in the toolbar.
+    override fun onCreateOptionsMenu(menu: Menu?): Boolean {
+        menuInflater.inflate(R.menu.main_menu, menu)
+        return true
+    }
+
+    //this method will allow the user to select items from the menu
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        when(item.itemId){
+            R.id.action_add -> {
+                startActivity(Intent(applicationContext, MainActivity::class.java))
+                return true
+            }
+            R.id.action_list -> {
+                startActivity(Intent(applicationContext, RestaurantRecyclerListActivity::class.java))
+                return true
+            }
+            R.id.action_profile -> {
+                startActivity(Intent(applicationContext, ProfileActivity::class.java))
+                return true
+            }
+        }
+        return super.onOptionsItemSelected(item)
     }
 }
