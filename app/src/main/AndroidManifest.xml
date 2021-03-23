@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.jdub.comp3025restaurantrater">
+    package="com.lh12345678.comp3025restaurantrater">
 
     <application
         android:allowBackup="true"
@@ -9,6 +9,7 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.COMP3025RestaurantRater">
+        <activity android:name=".ProfileActivity"></activity>
         <activity android:name=".SignInActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -17,10 +18,8 @@
             </intent-filter>
         </activity>
         <activity android:name=".CommentActivity" />
-        <activity android:name=".RecyclerViewGridActivity"></activity>
-        <activity android:name=".RestaurantRecyclerListActivity">
-
-        </activity>
+        <activity android:name=".RecyclerViewGridActivity" />
+        <activity android:name=".RestaurantRecyclerListActivity"></activity>
         <activity android:name=".RestaurantListActivity" />
         <activity android:name=".MainActivity" />
     </application>

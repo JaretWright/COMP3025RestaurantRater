@@ -1,11 +1,11 @@
-package com.jdub.comp3025restaurantrater
+package com.lh12345678.comp3025restaurantrater
 
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Toast
 import com.google.firebase.firestore.FirebaseFirestore
-import com.jdub.comp3025restaurantrater.databinding.ActivityMainBinding
+import com.lh12345678.comp3025restaurantrater.databinding.ActivityMainBinding
 
 class MainActivity : AppCompatActivity() {
     private lateinit var binding : ActivityMainBinding

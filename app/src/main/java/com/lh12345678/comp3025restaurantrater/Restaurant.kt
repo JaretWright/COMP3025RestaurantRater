@@ -1,4 +1,4 @@
-package com.jdub.comp3025restaurantrater
+package com.lh12345678.comp3025restaurantrater
 
 data class Restaurant (
     var id: String? = null,

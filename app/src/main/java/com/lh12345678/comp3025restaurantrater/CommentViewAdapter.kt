@@ -1,4 +1,4 @@
-package com.jdub.comp3025restaurantrater
+package com.lh12345678.comp3025restaurantrater
 
 import android.content.Context
 import android.view.LayoutInflater

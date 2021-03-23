@@ -1,4 +1,4 @@
-package com.jdub.comp3025restaurantrater
+package com.lh12345678.comp3025restaurantrater
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
@@ -6,7 +6,7 @@ import android.widget.Toast
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import com.google.firebase.firestore.FirebaseFirestore
-import com.jdub.comp3025restaurantrater.databinding.ActivityCommentBinding
+import com.lh12345678.comp3025restaurantrater.databinding.ActivityCommentBinding
 
 class CommentActivity : AppCompatActivity() {
     private lateinit var binding : ActivityCommentBinding

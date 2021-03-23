@@ -9,7 +9,7 @@ android {
     buildToolsVersion "30.0.3"
 
     defaultConfig {
-        applicationId "com.jdub.comp3025restaurantrater"
+        applicationId "com.lh12345678.comp3025restaurantrater"
         minSdkVersion 23
         targetSdkVersion 30
         versionCode 1

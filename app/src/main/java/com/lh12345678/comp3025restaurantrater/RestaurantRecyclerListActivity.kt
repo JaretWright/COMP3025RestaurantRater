@@ -1,11 +1,11 @@
-package com.jdub.comp3025restaurantrater
+package com.lh12345678.comp3025restaurantrater
 
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.activity.viewModels
 import androidx.lifecycle.Observer
-import com.jdub.comp3025restaurantrater.databinding.ActivityRecyclerViewRestaurantListBinding
+import com.lh12345678.comp3025restaurantrater.databinding.ActivityRecyclerViewRestaurantListBinding
 
 class RestaurantRecyclerListActivity : AppCompatActivity(), RecyclerViewAdapter.RestaurantItemListener {
     private lateinit var binding : ActivityRecyclerViewRestaurantListBinding
