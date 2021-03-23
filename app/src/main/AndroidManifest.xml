@@ -22,6 +22,10 @@
         <activity android:name=".RestaurantRecyclerListActivity"></activity>
         <activity android:name=".RestaurantListActivity" />
         <activity android:name=".MainActivity" />
+
+        <meta-data
+            android:name="preloaded_fonts"
+            android:resource="@array/preloaded_fonts" />
     </application>
 
 </manifest>

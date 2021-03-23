@@ -24,12 +24,7 @@ class RestaurantRecyclerListActivity : AppCompatActivity(), RecyclerViewAdapter.
             binding.verticalRecyclerView.adapter = recyclerAdapter
         })
 
-        //setup a click listener for the floating action button to add a new restaurant
-        binding.addRestaurantFAB.setOnClickListener {
-            val intent = Intent(this, MainActivity::class.java)
-            startActivity(intent)
-        }
-        setSupportActionBar(binding.mainToolBar.toolbar)
+        setSupportActionBar(binding.mainToolBar)
     }
 
     //This method will connect the main_menu.xml file with the menu in the toolbar.

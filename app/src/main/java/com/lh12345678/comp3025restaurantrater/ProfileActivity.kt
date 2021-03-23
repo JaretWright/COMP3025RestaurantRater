@@ -38,7 +38,7 @@ class ProfileActivity : AppCompatActivity() {
             logout()
         }
 
-        setSupportActionBar(binding.mainToolBar.toolbar)
+        setSupportActionBar(binding.mainToolBar)
     }
 
     //This method will connect the main_menu.xml file with the menu in the toolbar.
