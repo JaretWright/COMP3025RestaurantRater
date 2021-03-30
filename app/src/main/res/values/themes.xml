@@ -13,6 +13,8 @@
         <item name="colorControlHighlight">@color/icons</item>
         <item name="colorControlActivated">@color/icons</item>
         <item name="fontFamily">@font/days_one</item>
+        <item name="colorButtonNormal">@color/primary_light</item>
+
 
         <!-- Secondary brand color. -->
         <item name="colorSecondary">@color/accent</item>

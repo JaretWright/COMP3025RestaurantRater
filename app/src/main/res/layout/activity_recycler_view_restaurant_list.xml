@@ -6,16 +6,13 @@
     android:layout_height="match_parent"
     tools:context=".RestaurantRecyclerListActivity">
 
-    <androidx.appcompat.widget.Toolbar
+    <include
         android:id="@+id/mainToolBar"
+        layout="@layout/toolbar_main"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="?attr/colorPrimary"
-        android:minHeight="?attr/actionBarSize"
-        android:theme="?attr/actionBarTheme"
-        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"/>
 
     <TextView
         android:id="@+id/textView"

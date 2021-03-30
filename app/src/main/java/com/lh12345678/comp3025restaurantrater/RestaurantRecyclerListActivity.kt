@@ -1,11 +1,11 @@
 package com.lh12345678.comp3025restaurantrater
 
 import android.content.Intent
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.Menu
 import android.view.MenuItem
 import androidx.activity.viewModels
+import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.Observer
 import com.lh12345678.comp3025restaurantrater.databinding.ActivityRecyclerViewRestaurantListBinding
 
@@ -24,7 +24,7 @@ class RestaurantRecyclerListActivity : AppCompatActivity(), RecyclerViewAdapter.
             binding.verticalRecyclerView.adapter = recyclerAdapter
         })
 
-        setSupportActionBar(binding.mainToolBar)
+        setSupportActionBar(binding.mainToolBar.topToolbar)
     }
 
     //This method will connect the main_menu.xml file with the menu in the toolbar.

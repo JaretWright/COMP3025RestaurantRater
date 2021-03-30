@@ -1,8 +1,15 @@
 package com.lh12345678.comp3025restaurantrater
 
+import android.content.Context
+import android.content.Intent
 import android.content.pm.PackageManager
+import android.location.Address
+import android.location.Geocoder
 import android.location.Location
 import android.os.Bundle
+import android.view.Menu
+import android.view.MenuItem
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.app.ActivityCompat
 import com.google.android.gms.location.FusedLocationProviderClient
@@ -14,8 +21,11 @@ import com.google.android.gms.maps.SupportMapFragment
 import com.google.android.gms.maps.model.LatLng
 import com.google.android.gms.maps.model.Marker
 import com.google.android.gms.maps.model.MarkerOptions
+import com.lh12345678.comp3025restaurantrater.databinding.ActivityMapsBinding
 
 class MapsActivity : AppCompatActivity(), OnMapReadyCallback, GoogleMap.OnMarkerClickListener {
+
+    private lateinit var binding : ActivityMapsBinding
 
     companion object {
         private const val LOCATION_PERMISSION_REQUEST_CODE = 1
@@ -27,13 +37,50 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback, GoogleMap.OnMarker
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_maps)
+        binding = ActivityMapsBinding.inflate(layoutInflater)
+        setContentView(binding.root)
+
         // Obtain the SupportMapFragment and get notified when the map is ready to be used.
         val mapFragment = supportFragmentManager
                 .findFragmentById(R.id.map) as SupportMapFragment
         mapFragment.getMapAsync(this)
 
         fusedLocationClient = LocationServices.getFusedLocationProviderClient(this)
+
+        //setup click listener to update the map based on the address entered
+        binding.searchButton.setOnClickListener {
+            updateLocation()
+        }
+
+        //update the default information to be the restaurant name (assume it's in Barrie)
+        binding.addressEditText.setText(intent.getStringExtra("restaurantName"))
+
+        setSupportActionBar(binding.mainToolBar.topToolbar)
+    }
+
+    //This method will connect the main_menu.xml file with the menu in the toolbar.
+    override fun onCreateOptionsMenu(menu: Menu?): Boolean {
+        menuInflater.inflate(R.menu.main_menu, menu)
+        return true
+    }
+
+    //this method will allow the user to select items from the menu
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        when(item.itemId){
+            R.id.action_add -> {
+                startActivity(Intent(applicationContext, MainActivity::class.java))
+                return true
+            }
+            R.id.action_list -> {
+                startActivity(Intent(applicationContext, RestaurantRecyclerListActivity::class.java))
+                return true
+            }
+            R.id.action_profile -> {
+                startActivity(Intent(applicationContext, ProfileActivity::class.java))
+                return true
+            }
+        }
+        return super.onOptionsItemSelected(item)
     }
 
     /**
@@ -94,5 +141,39 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback, GoogleMap.OnMarker
         map.animateCamera(CameraUpdateFactory.newLatLngZoom(location, 12f))
     }
 
+    // address string to lat/long location
+    // https://stackoverflow.com/questions/24352192/android-google-maps-add-marker-by-address/34562369#34562369
+    private fun getLocationFromAddress(context: Context?, strAddress: String?): LatLng? {
+        val coder = Geocoder(context)
+        val address: List<Address>?
+        var p1: LatLng? = null
+        try {
+            address = coder.getFromLocationName(strAddress, 5)
+            if (address == null) {
+                return null
+            }
+            val location: Address = address[0]
+            location.latitude
+            location.longitude
+            p1 = LatLng(location.latitude, location.longitude)
+        } catch (e: Exception) {
+            e.printStackTrace()
+        }
+        return p1
+    }
 
+    //This method will update the location of the map
+    private fun updateLocation()
+    {
+        var location = getLocationFromAddress(this, binding.addressEditText.text.toString())
+
+        if (location != null)
+        {
+            placeMarkerOnMap(location!!)
+        }
+        else
+        {
+            Toast.makeText(this, "That location was not found", Toast.LENGTH_LONG).show()
+        }
+    }
 }

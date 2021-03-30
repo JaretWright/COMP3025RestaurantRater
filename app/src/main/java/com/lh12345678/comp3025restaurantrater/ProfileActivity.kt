@@ -1,14 +1,12 @@
 package com.lh12345678.comp3025restaurantrater
 
 import android.content.Intent
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.text.method.ScrollingMovementMethod
 import android.view.Menu
 import android.view.MenuItem
-import androidx.recyclerview.widget.RecyclerView
+import androidx.appcompat.app.AppCompatActivity
 import com.google.firebase.auth.FirebaseAuth
-import com.google.firebase.ktx.Firebase
 import com.lh12345678.comp3025restaurantrater.databinding.ActivityProfileBinding
 
 class ProfileActivity : AppCompatActivity() {
@@ -38,7 +36,7 @@ class ProfileActivity : AppCompatActivity() {
             logout()
         }
 
-        setSupportActionBar(binding.mainToolBar)
+        setSupportActionBar(binding.mainToolBar.topToolbar)
     }
 
     //This method will connect the main_menu.xml file with the menu in the toolbar.

@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">Restaurant Rater</string>
+    <string name="app_name"></string>
     <string name="add_a_restaurant">Add a Restaurant</string>
     <string name="enter_restaurant_name">Enter Restaurant Name</string>
     <string name="add_restaurant">Add Restaurant</string>
@@ -21,5 +21,7 @@
     <string name="add_a_new_restaurant">Add a new Restaurant</string>
     <string name="show_all_restaurants">Show all restaurants</string>
     <string name="user_profile">User Profile</string>
-    <string name="title_activity_maps">Map</string>
+    <string name="title_activity_maps"></string>
+    <string name="enter_address">Enter Address</string>
+    <string name="show_on_map">Show On Map</string>
 </resources>

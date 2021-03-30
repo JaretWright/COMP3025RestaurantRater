@@ -60,10 +60,11 @@ class CommentActivity : AppCompatActivity() {
         //Navigate to a Maps activity
         binding.mapsFAB.setOnClickListener {
             val intent = Intent(this, MapsActivity::class.java)
+            intent.putExtra("restaurantName",binding.restaurantNameTextView.text.toString() )
             startActivity(intent)
         }
 
-        setSupportActionBar(binding.mainToolBar)
+        setSupportActionBar(binding.mainToolBar.topToolbar)
     }
 
     //This method will connect the main_menu.xml file with the menu in the toolbar.

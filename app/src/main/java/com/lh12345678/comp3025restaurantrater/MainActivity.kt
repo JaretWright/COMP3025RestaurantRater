@@ -1,11 +1,11 @@
 package com.lh12345678.comp3025restaurantrater
 
 import android.content.Intent
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.Menu
 import android.view.MenuItem
 import android.widget.Toast
+import androidx.appcompat.app.AppCompatActivity
 import com.google.firebase.firestore.FirebaseFirestore
 import com.lh12345678.comp3025restaurantrater.databinding.ActivityMainBinding
 
@@ -49,7 +49,7 @@ class MainActivity : AppCompatActivity() {
             }
         }
 
-        setSupportActionBar(binding.mainToolBar)
+        setSupportActionBar(binding.mainToolBar.topToolbar)
     }
 
     //This method will connect the main_menu.xml file with the menu in the toolbar.
