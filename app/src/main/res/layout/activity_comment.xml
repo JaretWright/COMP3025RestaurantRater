@@ -76,7 +76,7 @@
     </androidx.recyclerview.widget.RecyclerView>
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
-        android:id="@+id/backToRecyclerViewFAB"
+        android:id="@+id/mapsFAB"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
@@ -84,6 +84,7 @@
         android:clickable="true"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:srcCompat="@drawable/back_arrow" />
+        app:srcCompat="@drawable/ic_baseline_location_on_24"
+        app:tint="@color/icons"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

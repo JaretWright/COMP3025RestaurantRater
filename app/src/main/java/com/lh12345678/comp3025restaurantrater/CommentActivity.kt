@@ -1,11 +1,11 @@
 package com.lh12345678.comp3025restaurantrater
 
 import android.content.Intent
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.Menu
 import android.view.MenuItem
 import android.widget.Toast
+import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import com.google.firebase.firestore.FirebaseFirestore
@@ -57,8 +57,10 @@ class CommentActivity : AppCompatActivity() {
             })
         }
 
-        binding.backToRecyclerViewFAB.setOnClickListener {
-            finish()
+        //Navigate to a Maps activity
+        binding.mapsFAB.setOnClickListener {
+            val intent = Intent(this, MapsActivity::class.java)
+            startActivity(intent)
         }
 
         setSupportActionBar(binding.mainToolBar)
