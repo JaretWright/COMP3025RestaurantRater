@@ -21,4 +21,5 @@
     <string name="add_a_new_restaurant">Add a new Restaurant</string>
     <string name="show_all_restaurants">Show all restaurants</string>
     <string name="user_profile">User Profile</string>
+    <string name="title_activity_maps">Map</string>
 </resources>
