@@ -22,6 +22,7 @@ import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.UserProfileChangeRequest
 import com.lh12345678.comp3025restaurantrater.databinding.ActivityProfileBinding
 import java.io.File
+import java.io.FileInputStream
 
 class ProfileActivity : AppCompatActivity() {
     private lateinit var binding : ActivityProfileBinding
@@ -46,6 +47,14 @@ class ProfileActivity : AppCompatActivity() {
         authDb.currentUser?.let{ user->
             binding.userNameTextView.text = user.displayName
             binding.emailTextView.text = user.email
+
+           //Ask Firebase for the URI to the photo (where on the device is the photo)
+            var profilePhoto : Uri? = user.photoUrl
+
+            //if the profile photo URI is returned from Firebase AND it leads to a location on the device
+            //load the image
+            if (profilePhoto != null && profilePhoto.path != null)
+                loadProfileImage(profilePhoto.path!!)
         }
 
         //enable the scroll bars on the textview
@@ -166,5 +175,17 @@ class ProfileActivity : AppCompatActivity() {
                     Toast.makeText(this, "Profile Updated", Toast.LENGTH_LONG).show()
             }
         }
+    }
+
+    //Load the profile photo into the imageview
+    private fun loadProfileImage(pathToImage : String)
+    {
+        var file : File = File(pathToImage)
+
+        //convert to a BitMap
+        var bitmapImage = BitmapFactory.decodeStream(FileInputStream(file))
+
+        //display in the image view
+        binding.imageView.setImageBitmap(bitmapImage)
     }
 }
